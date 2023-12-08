@@ -495,9 +495,10 @@ def learner(*, game, config, actors, evaluators, broadcast_fn, logger):
     broadcast_fn(save_path)
 
 
-def alpha_zero(config: Config):
+def alpha_zero(config: Config, game: pyspiel.Game = None):
   """Start all the worker processes for a full alphazero setup."""
-  game = pyspiel.load_game(config.game)
+  if game is None:
+    game = pyspiel.load_game(config.game)
   config = config._replace(
       observation_shape=game.observation_tensor_shape(),
       output_size=game.num_distinct_actions())

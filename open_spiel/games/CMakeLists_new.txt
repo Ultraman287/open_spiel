@@ -1,0 +1,55 @@
+set(GAME_SOURCES
+  chess/chess.cc
+  chess/chess.h
+  chess/chess_board.cc
+  chess/chess_board.h
+  chess/chess_common.cc
+  chess/chess_common.h
+  minichess/minichess.cc
+  minichess/minichess.h
+  minichess/minichess_board.cc
+  minichess/minichess_board.h
+  minichess/minichess_common.cc
+  minichess/minichess_common.h
+  dark_chess/dark_chess.cc
+  dark_chess/dark_chess.h
+)
+
+if (${OPEN_SPIEL_BUILD_WITH_HANABI})
+  set(GAME_SOURCES ${GAME_SOURCES} hanabi/hanabi.cc hanabi/hanabi.h)
+endif()
+if (${OPEN_SPIEL_BUILD_WITH_ACPC})
+  set(GAME_SOURCES ${GAME_SOURCES} universal_poker/universal_poker.cc universal_poker/universal_poker.h)
+endif()
+
+
+target_include_directories (games PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+if (${OPEN_SPIEL_BUILD_WITH_HANABI})
+endif()
+if (${OPEN_SPIEL_BUILD_WITH_ACPC})
+endif()
+if (${OPEN_SPIEL_BUILD_WITH_GAMUT})
+endif()
+
+
+# Uncomment to build the Ludii demo
+
+
+add_executable(chess_test chess/chess_test.cc ${OPEN_SPIEL_OBJECTS}
+               $<TARGET_OBJECTS:tests>)
+add_test(chess_test chess_test)
+
+add_executable(minichess_test minichess/minichess_test.cc ${OPEN_SPIEL_OBJECTS}
+               $<TARGET_OBJECTS:tests>)
+add_test(minichess_test minichess_test)
+
+
+
+
+add_executable(dark_chess_test dark_chess/dark_chess_test.cc ${OPEN_SPIEL_OBJECTS}
+        $<TARGET_OBJECTS:tests>)
+add_test(dark_chess_test dark_chess_test)
+
+
+

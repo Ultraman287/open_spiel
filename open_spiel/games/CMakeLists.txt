@@ -31,6 +31,12 @@ set(GAME_SOURCES
   chess/chess_board.h
   chess/chess_common.cc
   chess/chess_common.h
+  minichess/minichess.cc
+  minichess/minichess.h
+  minichess/minichess_board.cc
+  minichess/minichess_board.h
+  minichess/minichess_common.cc
+  minichess/minichess_common.h
   cliff_walking/cliff_walking.cc
   cliff_walking/cliff_walking.h
   clobber/clobber.cc
@@ -321,6 +327,10 @@ add_test(checkers_test checkers_test)
 add_executable(chess_test chess/chess_test.cc ${OPEN_SPIEL_OBJECTS}
                $<TARGET_OBJECTS:tests>)
 add_test(chess_test chess_test)
+
+add_executable(minichess_test minichess/minichess_test.cc ${OPEN_SPIEL_OBJECTS}
+               $<TARGET_OBJECTS:tests>)
+add_test(minichess_test minichess_test)
 
 add_executable(cliff_walking_test cliff_walking/cliff_walking_test.cc ${OPEN_SPIEL_OBJECTS}
                $<TARGET_OBJECTS:tests>)

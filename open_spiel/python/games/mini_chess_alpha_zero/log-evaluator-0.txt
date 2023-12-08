@@ -1,0 +1,148 @@
+[2023-12-08 09:56:06.899] evaluator-0 started
+[2023-12-08 09:56:06.902] Initializing model
+[2023-12-08 09:56:07.842] Initializing bots
+[2023-12-08 09:56:08.069] Game 0: Returns: 1.0 -1.0; Actions: wP1->(1,1) bB->(1,1) wP2->(1,2) bK->(1,2) wB->(1,2)
+[2023-12-08 09:56:08.070] AZ: 1.0, MCTS: -1.0, AZ avg/1: 1.000
+[2023-12-08 09:56:08.071] Inference cache: CacheInfo(hits=19, misses=43, size=43, max_size=65536)
+[2023-12-08 09:56:08.071] Loading checkpoint ./mini_chess_alpha_zero/checkpoint-0
+[2023-12-08 09:56:08.201] Game 1: Returns: 1.0 -1.0; Actions: wP1->(1,2) bP1->(2,1) wP1->(0,2)
+[2023-12-08 09:56:08.201] AZ: -1.0, MCTS: 1.0, AZ avg/2: 0.000
+[2023-12-08 09:56:08.328] Game 2: Returns: 1.0 -1.0; Actions: wP1->(1,2) bP1->(2,0) wP1->(0,2)
+[2023-12-08 09:56:08.329] AZ: 1.0, MCTS: -1.0, AZ avg/3: 0.333
+[2023-12-08 09:56:08.778] Game 3: Returns: -1.0 1.0; Actions: wP1->(1,0) bP1->(2,2) wK->(2,3) bP2->(2,3)
+[2023-12-08 09:56:08.778] AZ: 1.0, MCTS: -1.0, AZ avg/4: 0.500
+[2023-12-08 09:56:08.905] Game 4: Returns: 1.0 -1.0; Actions: wP1->(1,2) bP1->(2,2) wP1->(0,2)
+[2023-12-08 09:56:08.905] AZ: 1.0, MCTS: -1.0, AZ avg/5: 0.600
+[2023-12-08 09:56:08.905] Inference cache: CacheInfo(hits=68, misses=72, size=72, max_size=65536)
+[2023-12-08 09:56:08.906] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 09:56:09.496] Game 5: Returns: 1.0 -1.0; Actions: wP1->(1,2) bP1->(2,2) wP1->(0,2)
+[2023-12-08 09:56:09.496] AZ: -1.0, MCTS: 1.0, AZ avg/6: 0.333
+[2023-12-08 09:56:09.497] Inference cache: CacheInfo(hits=8, misses=10, size=10, max_size=65536)
+[2023-12-08 09:56:09.497] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 09:56:13.554] Game 6: Returns: -1.0 1.0; Actions: wP2->(1,3) bK->(1,3) wP1->(1,1) bP2->(2,3) wP1->(0,2) bP2->(3,2)
+[2023-12-08 09:56:13.554] AZ: -1.0, MCTS: 1.0, AZ avg/7: 0.143
+[2023-12-08 09:56:13.554] Inference cache: CacheInfo(hits=23, misses=48, size=48, max_size=65536)
+[2023-12-08 09:56:13.554] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 09:56:14.252] Game 7: Returns: 1.0 -1.0; Actions: wP1->(1,2) bP1->(2,0) wP1->(0,2)
+[2023-12-08 09:56:14.252] AZ: -1.0, MCTS: 1.0, AZ avg/8: 0.000
+[2023-12-08 09:56:14.253] Inference cache: CacheInfo(hits=10, misses=13, size=13, max_size=65536)
+[2023-12-08 09:56:14.253] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 09:56:33.821] Game 8: Returns: -1.0 1.0; Actions: wP2->(1,3) bK->(1,3) wP1->(1,1) bR->(1,1) wB->(1,2) bR->(1,2) wR->(0,1) bR->(3,2)
+[2023-12-08 09:56:33.821] AZ: -1.0, MCTS: 1.0, AZ avg/9: -0.111
+[2023-12-08 09:56:33.822] Inference cache: CacheInfo(hits=31, misses=67, size=67, max_size=65536)
+[2023-12-08 09:56:33.822] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 09:56:34.360] Game 9: Returns: 1.0 -1.0; Actions: wP1->(1,2) bP1->(2,1) wP1->(0,2)
+[2023-12-08 09:56:34.360] AZ: -1.0, MCTS: 1.0, AZ avg/10: -0.200
+[2023-12-08 09:56:34.361] Inference cache: CacheInfo(hits=8, misses=12, size=12, max_size=65536)
+[2023-12-08 09:56:34.361] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 09:56:55.591] Game 10: Returns: -1.0 1.0; Actions: wP2->(1,3) bK->(1,3) wP1->(1,2) bP1->(2,2) wK->(2,3) bK->(2,3)
+[2023-12-08 09:56:55.592] AZ: -1.0, MCTS: 1.0, AZ avg/11: -0.273
+[2023-12-08 09:56:55.593] Inference cache: CacheInfo(hits=31, misses=39, size=39, max_size=65536)
+[2023-12-08 09:56:55.593] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 09:56:56.332] Game 11: Returns: 1.0 -1.0; Actions: wP1->(1,2) bP1->(2,1) wP1->(0,2)
+[2023-12-08 09:56:56.333] AZ: -1.0, MCTS: 1.0, AZ avg/12: -0.333
+[2023-12-08 09:56:56.333] Inference cache: CacheInfo(hits=7, misses=12, size=12, max_size=65536)
+[2023-12-08 09:56:56.333] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 09:58:05.438] Game 12: Returns: -1.0 1.0; Actions: wP2->(1,3) bK->(1,3) wP1->(1,0) bP1->(2,2) wK->(2,3) bP2->(2,3)
+[2023-12-08 09:58:05.438] AZ: -1.0, MCTS: 1.0, AZ avg/13: -0.385
+[2023-12-08 09:58:05.446] Inference cache: CacheInfo(hits=32, misses=36, size=36, max_size=65536)
+[2023-12-08 09:58:05.447] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 09:58:06.214] Game 13: Returns: 1.0 -1.0; Actions: wP1->(1,2) bK->(1,3) wP2->(1,3)
+[2023-12-08 09:58:06.214] AZ: -1.0, MCTS: 1.0, AZ avg/14: -0.429
+[2023-12-08 09:58:06.215] Inference cache: CacheInfo(hits=11, misses=15, size=15, max_size=65536)
+[2023-12-08 09:58:06.215] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 09:58:06.359] Game 14: Returns: 1.0 -1.0; Actions: wP2->(1,3) bK->(1,3) wP1->(1,2) bK->(2,2) wK->(2,2)
+[2023-12-08 09:58:06.359] AZ: 1.0, MCTS: -1.0, AZ avg/15: -0.333
+[2023-12-08 09:58:06.450] Game 15: Returns: 1.0 -1.0; Actions: wP1->(1,1) bP2->(2,3) wP1->(0,2)
+[2023-12-08 09:58:06.450] AZ: -1.0, MCTS: 1.0, AZ avg/16: -0.375
+[2023-12-08 09:58:07.889] Game 16: Returns: -1.0 1.0; Actions: wP2->(1,3) bK->(1,3) wP1->(1,2) bR->(0,2) wP1->(0,2) bK->(0,2) wK->(2,3) bP1->(2,0) wR->(3,2) bB->(2,2) wR->(2,2) bK->(0,1) wR->(3,2) bN->(1,1) wR->(2,2) bN->(2,3)
+[2023-12-08 09:58:07.889] AZ: -1.0, MCTS: 1.0, AZ avg/17: -0.412
+[2023-12-08 09:58:07.890] Inference cache: CacheInfo(hits=135, misses=141, size=141, max_size=65536)
+[2023-12-08 09:58:07.890] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 09:58:08.253] Game 17: Returns: 1.0 -1.0; Actions: wP2->(1,2) bK->(1,3) wP2->(0,3) bK->(2,2) wK->(2,2)
+[2023-12-08 09:58:08.253] AZ: -1.0, MCTS: 1.0, AZ avg/18: -0.444
+[2023-12-08 09:58:12.056] Game 18: Returns: -1.0 1.0; Actions: wP2->(1,3) bK->(1,3) wP1->(1,2) bN->(2,2) wN->(2,1) bP1->(2,1) wK->(3,3) bR->(1,1) wR->(3,2) bR->(1,2) wR->(2,2) bB->(2,2) wK->(3,2) bP1->(3,2)
+[2023-12-08 09:58:12.057] AZ: -1.0, MCTS: 1.0, AZ avg/19: -0.474
+[2023-12-08 09:58:12.057] Inference cache: CacheInfo(hits=77, misses=128, size=128, max_size=65536)
+[2023-12-08 09:58:12.057] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 09:58:12.693] Game 19: Returns: 1.0 -1.0; Actions: wP1->(1,1) bP2->(2,3) wP1->(0,2)
+[2023-12-08 09:58:12.693] AZ: -1.0, MCTS: 1.0, AZ avg/20: -0.500
+[2023-12-08 09:58:12.693] Inference cache: CacheInfo(hits=8, misses=15, size=15, max_size=65536)
+[2023-12-08 09:58:12.694] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 09:58:16.430] Game 20: Returns: -1.0 1.0; Actions: wP2->(1,3) bK->(1,3) wP1->(1,2) bP1->(2,2) wN->(2,1) bP1->(3,2)
+[2023-12-08 09:58:16.431] AZ: -1.0, MCTS: 1.0, AZ avg/21: -0.524
+[2023-12-08 09:58:16.431] Inference cache: CacheInfo(hits=28, misses=37, size=37, max_size=65536)
+[2023-12-08 09:58:16.432] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 09:58:17.063] Game 21: Returns: 1.0 -1.0; Actions: wP1->(1,2) bN->(2,2) wP1->(0,2)
+[2023-12-08 09:58:17.064] AZ: -1.0, MCTS: 1.0, AZ avg/22: -0.545
+[2023-12-08 09:58:17.064] Inference cache: CacheInfo(hits=9, misses=18, size=18, max_size=65536)
+[2023-12-08 09:58:17.064] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 09:58:24.323] Game 22: Returns: -1.0 1.0; Actions: wP2->(1,3) bK->(1,3) wP1->(1,2) bP1->(2,2) wK->(2,3) bK->(2,3)
+[2023-12-08 09:58:24.324] AZ: -1.0, MCTS: 1.0, AZ avg/23: -0.565
+[2023-12-08 09:58:24.324] Inference cache: CacheInfo(hits=32, misses=34, size=34, max_size=65536)
+[2023-12-08 09:58:24.324] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 09:58:24.823] Game 23: Returns: 1.0 -1.0; Actions: wP1->(1,2) bP1->(2,1) wP1->(0,2)
+[2023-12-08 09:58:24.824] AZ: -1.0, MCTS: 1.0, AZ avg/24: -0.583
+[2023-12-08 09:58:24.824] Inference cache: CacheInfo(hits=9, misses=14, size=14, max_size=65536)
+[2023-12-08 09:58:24.824] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 09:58:46.869] Game 24: Returns: -1.0 1.0; Actions: wP2->(1,3) bK->(1,3) wP1->(1,2) bP1->(2,2) wK->(2,3) bK->(2,3)
+[2023-12-08 09:58:46.869] AZ: -1.0, MCTS: 1.0, AZ avg/25: -0.600
+[2023-12-08 09:58:46.870] Inference cache: CacheInfo(hits=34, misses=35, size=35, max_size=65536)
+[2023-12-08 09:58:46.870] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 09:58:47.379] Game 25: Returns: 1.0 -1.0; Actions: wP1->(1,2) bP1->(2,2) wP1->(0,2)
+[2023-12-08 09:58:47.379] AZ: -1.0, MCTS: 1.0, AZ avg/25: -0.680
+[2023-12-08 09:58:47.380] Inference cache: CacheInfo(hits=10, misses=17, size=17, max_size=65536)
+[2023-12-08 09:58:47.380] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 10:05:39.919] Game 26: Returns: -1.0 1.0; Actions: wP2->(1,3) bK->(1,3) wP1->(1,2) bP1->(2,2) wK->(2,3) bK->(2,3)
+[2023-12-08 10:05:39.919] AZ: -1.0, MCTS: 1.0, AZ avg/25: -0.680
+[2023-12-08 10:05:39.925] Inference cache: CacheInfo(hits=28, misses=32, size=32, max_size=65536)
+[2023-12-08 10:05:39.925] Loading checkpoint ./mini_chess_alpha_zero/checkpoint-375
+[2023-12-08 10:05:40.961] Game 27: Returns: 1.0 -1.0; Actions: wP1->(1,2) bP1->(2,1) wP1->(0,2)
+[2023-12-08 10:05:40.961] AZ: -1.0, MCTS: 1.0, AZ avg/25: -0.760
+[2023-12-08 10:05:40.962] Inference cache: CacheInfo(hits=10, misses=14, size=14, max_size=65536)
+[2023-12-08 10:05:40.962] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 10:05:41.083] Game 28: Returns: 1.0 -1.0; Actions: wP2->(1,3) bP1->(2,1) wP2->(0,2)
+[2023-12-08 10:05:41.083] AZ: 1.0, MCTS: -1.0, AZ avg/25: -0.760
+[2023-12-08 10:05:41.232] Game 29: Returns: 1.0 -1.0; Actions: wP1->(1,1) bP2->(2,2) wP1->(0,2)
+[2023-12-08 10:05:41.232] AZ: -1.0, MCTS: 1.0, AZ avg/25: -0.840
+[2023-12-08 10:05:41.232] Inference cache: CacheInfo(hits=23, misses=30, size=30, max_size=65536)
+[2023-12-08 10:05:41.232] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 10:05:41.680] Game 30: Returns: -1.0 1.0; Actions: wP2->(1,3) bK->(1,3) wP1->(1,2) bP1->(2,2) wK->(2,1) bR->(2,1)
+[2023-12-08 10:05:41.680] AZ: -1.0, MCTS: 1.0, AZ avg/25: -0.840
+[2023-12-08 10:05:41.680] Inference cache: CacheInfo(hits=27, misses=29, size=29, max_size=65536)
+[2023-12-08 10:05:41.680] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 10:05:41.945] Game 31: Returns: 1.0 -1.0; Actions: wP1->(1,1) bP2->(2,2) wP1->(0,2)
+[2023-12-08 10:05:41.946] AZ: -1.0, MCTS: 1.0, AZ avg/25: -0.840
+[2023-12-08 10:05:44.564] Game 32: Returns: -1.0 1.0; Actions: wP2->(1,3) bK->(1,3) wP1->(1,2) bN->(2,2) wN->(2,1) bP1->(2,1) wK->(3,3) bN->(3,0) wP1->(0,3) bB->(3,3)
+[2023-12-08 10:05:44.565] AZ: -1.0, MCTS: 1.0, AZ avg/25: -0.840
+[2023-12-08 10:05:44.565] Inference cache: CacheInfo(hits=50, misses=83, size=83, max_size=65536)
+[2023-12-08 10:05:44.565] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 10:05:45.134] Game 33: Returns: 1.0 -1.0; Actions: wP1->(1,1) bP2->(2,3) wP1->(0,2)
+[2023-12-08 10:05:45.135] AZ: -1.0, MCTS: 1.0, AZ avg/25: -0.840
+[2023-12-08 10:05:45.135] Inference cache: CacheInfo(hits=7, misses=14, size=14, max_size=65536)
+[2023-12-08 10:05:45.135] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 10:05:47.600] Game 34: Returns: -1.0 1.0; Actions: wP2->(1,3) bK->(1,3) wP1->(1,2) bP1->(2,2) wK->(2,3) bK->(2,3)
+[2023-12-08 10:05:47.600] AZ: -1.0, MCTS: 1.0, AZ avg/25: -0.840
+[2023-12-08 10:05:47.600] Inference cache: CacheInfo(hits=27, misses=29, size=29, max_size=65536)
+[2023-12-08 10:05:47.600] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 10:05:47.938] Game 35: Returns: 1.0 -1.0; Actions: wP1->(1,2) bP1->(2,2) wP1->(0,2)
+[2023-12-08 10:05:47.938] AZ: -1.0, MCTS: 1.0, AZ avg/25: -0.840
+[2023-12-08 10:05:54.659] Game 36: Returns: -1.0 1.0; Actions: wP2->(1,3) bK->(1,3) wP1->(1,2) bP1->(2,2) wR->(0,1) bP1->(3,2)
+[2023-12-08 10:05:54.659] AZ: -1.0, MCTS: 1.0, AZ avg/25: -0.840
+[2023-12-08 10:05:54.660] Inference cache: CacheInfo(hits=38, misses=47, size=47, max_size=65536)
+[2023-12-08 10:05:54.660] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 10:05:55.614] Game 37: Returns: 1.0 -1.0; Actions: wP1->(1,2) bP1->(2,2) wP1->(0,2)
+[2023-12-08 10:05:55.614] AZ: -1.0, MCTS: 1.0, AZ avg/25: -0.840
+[2023-12-08 10:05:55.614] Inference cache: CacheInfo(hits=11, misses=16, size=16, max_size=65536)
+[2023-12-08 10:05:55.614] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 10:06:16.798] Game 38: Returns: -1.0 1.0; Actions: wP2->(1,3) bK->(1,3) wP1->(1,2) bP1->(2,2) wK->(2,3) bK->(2,3)
+[2023-12-08 10:06:16.798] AZ: -1.0, MCTS: 1.0, AZ avg/25: -0.840
+[2023-12-08 10:06:16.800] Inference cache: CacheInfo(hits=28, misses=29, size=29, max_size=65536)
+[2023-12-08 10:06:16.800] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 10:06:17.334] Game 39: Returns: 1.0 -1.0; Actions: wP1->(1,2) bP1->(2,2) wP1->(0,2)
+[2023-12-08 10:06:17.334] AZ: -1.0, MCTS: 1.0, AZ avg/25: -0.920
+[2023-12-08 10:06:17.335] Inference cache: CacheInfo(hits=10, misses=16, size=16, max_size=65536)
+[2023-12-08 10:06:17.335] Loading checkpoint ./mini_chess_alpha_zero/checkpoint--1
+[2023-12-08 10:07:12.014] Game 40: Returns: -1.0 1.0; Actions: wP2->(1,3) bK->(1,3) wP1->(1,2) bP1->(2,2) wK->(2,1) bR->(2,1)
+[2023-12-08 10:07:12.014] AZ: -1.0, MCTS: 1.0, AZ avg/25: -0.920
+[2023-12-08 10:07:12.018] evaluator-0 exiting

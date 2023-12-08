@@ -60,3 +60,6 @@ Package.resolved
 # Visual Studio generated files
 open_spiel/.vs
 /.env
+
+
+cmake-3.28.0-rc5-linux-x86_64/*
