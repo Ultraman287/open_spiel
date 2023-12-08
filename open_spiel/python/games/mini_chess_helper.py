@@ -3,6 +3,11 @@ from absl import app
 from absl import flags
 import numpy as np
 
+'''
+This is a helper file designed to implement the required tweaks to the existing implementation
+of open spiel in order to accomodate the mini chess game. This file is not meant to be run
+'''
+
 from open_spiel.python import games  # pylint: disable=unused-import
 from open_spiel.python.algorithms.alpha_zero import alpha_zero
 from open_spiel.python.algorithms.alpha_zero import model as model_lib
@@ -30,8 +35,14 @@ import pyspiel
 # Similarly, for mcts.py, we need to change the following:
 
 
+'''
+The action space for mini chess was designed as follows:
+    1. The Pawns and Bishops are first mapped to all the squares that they can move to manually
+    since they have a different action space than the rest of the pieces
+    2. The rest of the pieces are iteratively mapped to all the squares within the baord and added to
+    the action space
+'''
 action_space = {}
-
 action_space['wP1->(1,0)'] = 0
 action_space['wP1->(1,1)'] = 1
 action_space['wP1->(1,2)'] = 2
@@ -86,6 +97,11 @@ for piece in go_over_all:
             action_space[piece+'->('+str(i)+','+str(j)+')'] = cur
             cur += 1
 
+'''
+This keeps a specific edge case in mind where the pawn's initial position, even if not a
+possible action, is still the last action that ocurred for the action space to get to the 
+initial state which means it won't get called separately.
+'''
 action_space['wP1->(2,1)'] = 140
 action_space['wP2->(2,2)'] = 141
 action_space['bP1->(1,1)'] = 142
@@ -93,12 +109,18 @@ action_space['bP2->(1,2)'] = 143
 space_action = {v: k for k, v in action_space.items()}
 
 def debug_main(game: pyspiel.Game):
+  '''
+  This is an altered version of the main function in the open_spiel/python/examples/example.py filled
+  with all the completed flags that codify the mini chess game within the context of open spiel. 
+  '''
+    
   state = game.new_initial_state()
   
   # Print the initial state
   print(str(state))
 
   while not state.is_terminal():
+      # This just successively plays random actions until the game is done.
       action = random.choice(state.legal_actions(state.current_player()))
       action_string = state.action_to_string(state.current_player(), action)
       print("Player ", state.current_player(), ", randomly sampled action: ",
@@ -112,6 +134,14 @@ def debug_main(game: pyspiel.Game):
   for pid in range(game.num_players()):
     print("Utility for player {} is {}".format(pid, returns[pid]))
 
+
+'''
+Below is an altered version of the examples/alpha_zero.py file that is filled with all the
+completed flags for the hyperparameters that are going to be used for the mini chess game.
+
+Since the default values were using estimates for the original alphazero paper, something built on much more
+data with a much larger action space, I had to change the values to be more appropriate for the mini chess game.
+'''
 default_values = {
     "game": "mini_chess",
     "uct_c": 2,
@@ -139,7 +169,7 @@ default_values = {
     "verbose": False
 }
 
-# FLAGS.set_default("game", "mini_chess")
+
 
 def debug_alpha_zero(game: pyspiel.Game):
     config = alpha_zero.Config(
@@ -169,9 +199,19 @@ def debug_alpha_zero(game: pyspiel.Game):
         output_size=None,
         quiet=default_values["quiet"],
     )
-    alpha_zero.alpha_zero(config, game=game)
+    alpha_zero.alpha_zero(config, game=game) # this uses open_spiel's built in alpha zero algorithm slightly modified
+    # to allow for the game instance to be inputted directly instead of having to build it in separately into the library
     
 
+
+'''
+This is an altered version of the examples/mcts.py file that is filled with all the
+completed flags for the required information for the mcts agent to run on the mini chess game.
+
+In this case, it uses the az_model which is essentially a checkpoint created through prior training with
+the alpha zero algorithm. The actuall implementation has been abstracted well enough that just by running this
+you can play against a well-trained mcts agent on this tiny board from the command line.
+'''
 
 mcts_flags = {
     "game": "tic_tac_toe",
@@ -308,7 +348,7 @@ def _play_game(game, bots, initial_actions):
 
 
 def debug_mcts_evaluator(argv, game: pyspiel.Game = None, **kwargs):
-    for k, v in kwargs.items():
+    for k, v in kwargs.items(): # this is to allow for dynamically changing the flags from where the files getting run
         mcts_flags[k] = v
     if game == None:
         game = pyspiel.load_game(mcts_flags["game"])

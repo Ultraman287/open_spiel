@@ -13,9 +13,7 @@
 # limitations under the License.
 
 # Lint as python3
-"""Tic tac toe (noughts and crosses), implemented in Python.
-
-This is a demonstration of implementing a deterministic perfect-information
+"""This is a demonstration of implementing a deterministic perfect-information
 game in Python.
 
 Python games are significantly slower than C++, but it may still be suitable
@@ -25,17 +23,29 @@ It is possible to run C++ algorithms on Python-implemented games. This is likely
 to have good performance if the algorithm simply extracts a game tree and then
 works with that (e.g. CFR algorithms). It is likely to be poor if the algorithm
 relies on processing and updating states as it goes, e.g., MCTS.
+
+This file contains an implementation of a rudimentary version of mini-chess.
+Mini-chess is a simplified version of chess played on a 4x4 board. The game
+follows the rules of chess, but with a limited set of pieces and moves.
+
+The implementation includes the game logic, state representation, legal move
+generation, and observation functions.
+
+For more information on mini-chess, refer to the official rules and documentation.
 """
 
 import numpy as np
 
-from open_spiel.python.observation import IIGObserverForPublicInfoGame
 from mini_chess_helper import action_space, space_action, debug_main, debug_alpha_zero, debug_mcts_evaluator
 import pyspiel
 import numpy as np
 import subprocess
 
+'''
+Set up the game
 
+Since it's variant of chess, the game is zero-sum, perfect information, and sequential.
+'''
 _NUM_PLAYERS = 2
 _NUM_ROWS = 4
 _NUM_COLS = 4
@@ -55,6 +65,20 @@ _GAME_TYPE = pyspiel.GameType(
     provides_observation_string=True,
     provides_observation_tensor=True,
     parameter_specification={})
+'''
+Num distinct actions is calculated as the 7 possible moves for each of the 4 pawns (28),
+plus the 8 possibles moves for each of the 2 bishops (16). The other pieces can all moves
+to all 16 squares and so multiplying by 2 for either color gives 32 for each of the rooks,
+knights, and kings. The total is 28+16+32+32+32 = 140.
+
+The max chance outcomes is 0 because there is no chance in this game.
+
+The min and max utility are -1 and 1 because the game is zero-sum.
+
+The max game length is used as an estimate to make sure that games that go on too long 
+get cut off. The value itself is inspired by the work of Kirill Kryukov on smaller chess variants
+and potential moves which can be found at https://kirill-kryukov.com/chess/4x4-chess/nulp.html.
+'''
 _GAME_INFO = pyspiel.GameInfo(
     num_distinct_actions=28+16+32+32+32,
     max_chance_outcomes=0,
@@ -66,7 +90,10 @@ _GAME_INFO = pyspiel.GameInfo(
 
 
 class MiniChessGame(pyspiel.Game):
-  """A Python version of Mini Chess."""
+  """A Python version of Mini Chess.
+  The class inherets from pyspiel.Game which contains the scaffolding for the basic functions
+  that each game implemented within the open spiel framework must have.
+  """
 
   def __init__(self, params=None):
     super().__init__(_GAME_TYPE, _GAME_INFO, params or dict())
@@ -76,16 +103,26 @@ class MiniChessGame(pyspiel.Game):
     return MiniChessState(self)
 
   def make_py_observer(self, iig_obs_type=None, params=None):
-    """Returns an object used for observing game state."""
-    if ((iig_obs_type is None) or
-        (iig_obs_type.public_info and not iig_obs_type.perfect_recall)):
-      return BoardObserver(params)
-    else:
-      return IIGObserverForPublicInfoGame(iig_obs_type, params)
+    """Returns an object used for observing game state.
+      An observer is used to get information about the game state. This is done in the
+      form of a tensor which is a 1-D array of floats and a dictionary of views onto the
+      tensor. The tensor is indexed by (cell state, row, column). The cell state is a
+      one-hot encoding of the piece type and color. The row and column are the position
+      of the piece on the board. The dictionary is indexed by strings and is used to
+      access the tensor. The strings are the names of the views. The only view is
+      "observation" which is the tensor itself.
+    """
+    
+    return BoardObserver(params)
+
 
 
 class MiniChessState(pyspiel.State):
-  """A python version of the Tic-Tac-Toe state."""
+  """A state object that implements logic underneath for the working of the game
+  It keeps track of the current player, the current board state, and whether or not
+  the game is over. It also has functions for getting the current player, the legal
+  actions, applying an action, and checking if the game is over.
+  ."""
 
   def __init__(self, game):
     """Constructor; should only be called by Game.new_initial_state."""
@@ -135,6 +172,12 @@ class MiniChessState(pyspiel.State):
 
     return legal_moves
 
+    """
+    Each piece has a different set of legal moves and the finding of those moves has been
+    abstracted into their own functions. The modularity of this design easily showcases the potential
+    for generalization to other chess variants as the important bit is having each indvidual case
+    find its own legal moves. The legal moves are then sorted and returned.
+    """
   def _legal_pawn_moves(self, i, j, pawn_str):
     legal_moves = []
     opp_str = 'b' if pawn_str[0] == 'w' else 'w'
@@ -218,7 +261,20 @@ class MiniChessState(pyspiel.State):
     return legal_moves
 
   def _apply_action(self, action):
-    """Applies the specified action to the state."""
+    """Applies the specified action to the state.
+    This function essentially maps the integer action to the corresponding effect it should
+    have on the state of the game. This is done by finding the corresponding piece and movement
+    of the piece on the board and then search for where the piece initiatially was and updating the 
+    board accordingly. The current player is then updated and the game is checked to see if it is over.
+    This is easily done by checking if there is only one king left on the board.
+    
+    
+    Complexity wise this function is O(m*n) where m is the number of rows and n is the number of columns.
+    This is because the function loops through the board to find the piece that is being moved and then
+    loops through the board again to find the piece that is being captured. The function could be made
+    more efficient by keeping track of the location of the pieces and then updating the board accordingly
+    but this would require more memory and would be more complicated to implement.
+    """
     
     action_str = space_action[action]
     print(f'action_str: {action_str}')
@@ -244,10 +300,10 @@ class MiniChessState(pyspiel.State):
       self._cur_player = 1 - self._cur_player
 
   def _action_to_string(self, player, action):
-    """Action -> string."""
+    """Action -> string.
+    This just gets the string representation of the action.
+    """
     return space_action[action]
-    # row, col = _coord(action)
-    # return "{}({},{})".format("x" if player == 0 else "o", row, col)
 
   def is_terminal(self):
     """Returns True if the game is over."""
@@ -272,6 +328,10 @@ class BoardObserver:
     # The observation should contain a 1-D tensor in `self.tensor` and a
     # dictionary of views onto the tensor, which may be of any shape.
     # Here the observation is indexed `(cell state, row, column)`.
+    '''
+    There are 13 possible pieces that can be on the board with the 4 separate pawns, 8 special
+    pieces and empty spaces. The observation is a 1-D tensor of size 208 which is 13*4*4. The
+    '''
     self.tensor = np.zeros(208, np.float32)
     self.dict = {"observation": np.reshape(self.tensor, (13, 4, 4))}
     self.piece_to_index = {'bP1':0, 'bP2':1, 'bB':2, 'bR':3, 'bN':4, 'bK':5,
@@ -309,17 +369,11 @@ pyspiel.register_game(_GAME_TYPE, MiniChessGame)
 if __name__=='__main__':
     game = pyspiel.load_game('python_mini_chess')
     
-    debug_main(game)
+    debug_main(game) # This runs one completely random instance of the game
+    # debug_alpha_zero(game) # This trains an alpha zero agent on the game and save the checkpoints to mini_chess_alpha_zero
     debug_mcts_evaluator([], game=game, az_path='open_spiel/python/games/mini_chess_alpha_zero/checkpoint-475')
-    # debug_alpha_zero(game)
-    # state = game.new_initial_state()
-    # print(state)
-    # while not state.is_terminal():
-    #     print(state.legal_actions())
-    #     action = int(input())
-    #     state.apply_action(action)
-    #     print(state)
-    # print(state.returns())
-  # I want to use examples/example.py to run this game
+    # This runs a Monte Carlo Tree Search agent on the game using the alpha zero agent as the evaluator
+    
+
 
 
